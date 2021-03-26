@@ -144,3 +144,5 @@ static
 
 # vim
 *.swp
+report.html
+assets/
