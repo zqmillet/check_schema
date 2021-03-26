@@ -5,21 +5,21 @@ description: this module contains the testcases about check_schema.
 import collections
 import pytest
 
-from fast_tornado.match_schema import check_schema
+from check_schema import check_schema
 
-from fast_tornado.exceptions import TypeMismatchException
-from fast_tornado.exceptions import AssertionException
-from fast_tornado.exceptions import InitializeLambdaExpressionException
-from fast_tornado.exceptions import CannotFindPropertyException
-from fast_tornado.exceptions import EnumerationException
-from fast_tornado.exceptions import InvalidPropertyException
-from fast_tornado.exceptions import DependenciesException
-from fast_tornado.exceptions import RegexPatternException
-from fast_tornado.exceptions import NonstringTypeHasPatternException
-from fast_tornado.exceptions import ExceedMaximumException
-from fast_tornado.exceptions import ExceedMinimumException
-from fast_tornado.exceptions import LengthRangeException
-from fast_tornado.exceptions import MultipleOfException
+from check_schema import TypeMismatchException
+from check_schema import AssertionException
+from check_schema import InitializeLambdaExpressionException
+from check_schema import CannotFindPropertyException
+from check_schema import EnumerationException
+from check_schema import InvalidPropertyException
+from check_schema import DependenciesException
+from check_schema import RegexPatternException
+from check_schema import NonstringTypeHasPatternException
+from check_schema import ExceedMaximumException
+from check_schema import ExceedMinimumException
+from check_schema import LengthRangeException
+from check_schema import MultipleOfException
 
 @pytest.mark.parametrize(
     'schema, data, exception', [

@@ -2,9 +2,7 @@
 description: this module provides the exceptions about match_schema.
 """
 
-from .base import FastTornadoBaseException
-
-class SchemaException(FastTornadoBaseException):
+class SchemaException(BaseException):
     """
     description: this is the base exception of exceptions about match_schema.
     """
