@@ -8,19 +8,19 @@ import importlib
 import collections.abc
 import yaml
 
-from .exceptions import TypeMismatchException
-from .exceptions import InitializeLambdaExpressionException
-from .exceptions import AssertionException
-from .exceptions import CannotFindPropertyException
-from .exceptions import EnumerationException
-from .exceptions import InvalidPropertyException
-from .exceptions import DependenciesException
-from .exceptions import RegexPatternException
-from .exceptions import NonstringTypeHasPatternException
-from .exceptions import ExceedMaximumException
-from .exceptions import ExceedMinimumException
-from .exceptions import LengthRangeException
-from .exceptions import MultipleOfException
+from check_schema.exceptions import TypeMismatchException
+from check_schema.exceptions import InitializeLambdaExpressionException
+from check_schema.exceptions import AssertionException
+from check_schema.exceptions import CannotFindPropertyException
+from check_schema.exceptions import EnumerationException
+from check_schema.exceptions import InvalidPropertyException
+from check_schema.exceptions import DependenciesException
+from check_schema.exceptions import RegexPatternException
+from check_schema.exceptions import NonstringTypeHasPatternException
+from check_schema.exceptions import ExceedMaximumException
+from check_schema.exceptions import ExceedMinimumException
+from check_schema.exceptions import LengthRangeException
+from check_schema.exceptions import MultipleOfException
 
 TYPES = {
     'int': int,
