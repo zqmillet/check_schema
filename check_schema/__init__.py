@@ -18,3 +18,10 @@ from .exceptions import ExceedMaximumException
 from .exceptions import ExceedMinimumException
 from .exceptions import LengthRangeException
 from .exceptions import MultipleOfException
+
+__author__ = 'qiqi'
+__email__ = 'zqmillet@qq.com'
+__module_name__ = 'check_schema'
+__description__ = 'check object with schema'
+__url__ = 'https://github.com/zqmillet/check_schema'
+__version__ = (0, 0, 1)
