@@ -40,8 +40,8 @@ def __load_type(type_string):
     if type_string in TYPES:
         return TYPES[type_string]
 
-    package, clazz = type_string.rsplit('.', 1)
-    module = importlib.import_module(package)
+    *packages, clazz = type_string.rsplit('.')
+    module = importlib.import_module('.'.join(packages))
     return getattr(module, clazz)
 
 def __initialize_types(schema):
@@ -271,10 +271,6 @@ def __check_multiple_of(data, schema, name):
     )
 
 def __check_schema(schema, data, name='data'):
-    __initialize_types(schema)
-    __initialize_assertion(schema)
-    __check_validation(schema)
-
     __check_type(data, schema, name)
     __check_assertion(data, schema, name)
     __check_properties(data, schema, name)
@@ -300,5 +296,13 @@ def check_schema(schema, data, name='data'):
             type: any
             description: the data.
     """
-    schema = yaml.safe_load(schema)
+    schema = load_schema(schema)
     __check_schema(schema, data, name)
+
+def load_schema(string):
+    schema = yaml.safe_load(string)
+    __initialize_types(schema)
+    __initialize_assertion(schema)
+    __check_validation(schema)
+    return schema
+

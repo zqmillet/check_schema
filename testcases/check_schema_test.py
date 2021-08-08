@@ -1,5 +1,4 @@
 """
-description: this module contains the testcases about check_schema.
 """
 
 import collections

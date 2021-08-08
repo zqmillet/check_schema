@@ -3,6 +3,8 @@ description: this module provides the function check_schema.
 """
 
 from .check_schema import check_schema
+from .schema import load_schema
+from .schema import Schema
 
 from .exceptions import SchemaException
 from .exceptions import TypeMismatchException
