@@ -1,5 +1,4 @@
 from check_schema import load_schema
-from check_schema import Schema
 
 def test_load_schema():
     string = '''

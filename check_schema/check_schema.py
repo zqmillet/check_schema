@@ -32,6 +32,8 @@ TYPES = {
     'tuple': tuple,
     'any': object,
     'None': type(None),
+    'type': type,
+    None: type(None)
 }
 
 
@@ -305,4 +307,3 @@ def load_schema(string):
     __initialize_assertion(schema)
     __check_validation(schema)
     return schema
-
