@@ -42,7 +42,7 @@ class Schema(dict):
         self._handle_assertion()
         self._handle_properties()
         self._handle_items()
-        if mode == 'fuzzy':
+        if mode == Mode.fuzzy:
             self._is_type = isinstance
         else:
             self._is_type = lambda instance, types: type(instance) in types
@@ -93,8 +93,12 @@ class Schema(dict):
             raise TypeMismatchException(data, self['type'], name)
 
     def _check_properties(self, data, name):
-        for property_name, property_schema in self.get('properties', dict()).items():
+        if 'properties' not in self: 
+            return
+
+        for property_name, property_schema in self['properties'].items():
             required = property_schema.get('required', True)
+
             if property_name not in data and required:
                 raise CannotFindPropertyException(
                     data=data,
@@ -102,6 +106,33 @@ class Schema(dict):
                     name=name
                 )
 
+            if property_name not in data:
+                continue
+
+            dependencies = property_schema.get('dependencies', list())
+            for dependency in dependencies:
+                if dependency in data:
+                    continue
+
+                raise DependenciesException(
+                    data=data,
+                    name=name,
+                    property_name=property_name,
+                    nonexistent_dependencies=sorted(set(dependencies) - data.keys())
+                )
+
+            property_schema.check(
+                data=data[property_name],
+                name='{name}[{property_name}]'.format(name=name, property_name=repr(property_name))
+            )
+
+        additional_properities = sorted(set(data) - self['properties'].keys())
+        if not self.get('additional_properities', True) and additional_properities:
+            raise InvalidPropertyException(
+                data=data,
+                property_names=additional_properities,
+                name=name
+            )
 
     def check(self, data, name='data'):
         self._check_type(data, name)
